@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greenshock Tutorial</title>
+  <style>
+    button {
+      margin: 10px 0 0;
+    }
+    .box {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+    }
+    .green {
+      background: green;
+    }
+    .orange {
+      background: orange;
+    }
+    .gray {
+      background: gray;
+    }
+  </style>
+</head>
+<body>
+  <!-- anime1 -->
+  <button type="button" id="anime1">start</button>
+  <div class="box animation-box1 green"></div>
+  <div class="box animation-box1 orange"></div>
+  <div class="box animation-box1 gray"></div>
+
+  <!-- anime2 -->
+  <button type="button" id="anime2">start</button>
+  <div class="box animation-box2 green"></div>
+  <div class="box animation-box3 orange"></div>
+  <div class="box animation-box4 gray"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"></script>
+  <script>
+
+    const animationModules = (()=> {
+      return {
+        animation01: () => {
+        // anime1
+          document.querySelector('#anime1').addEventListener('click', e => {
+            gsap.to(".animation-box1", {
+              rotation: 90,
+              x: 100,
+              duration: 1.5,//1.5sかけて移動する
+              startAt: { //初期位置
+                x: 0,
+                rotation: 0, 
+                }
+              });
+          })
+        },
+
+        animation02: () => {
+          // anime2
+          document.querySelector('#anime2').addEventListener('click', e => {
+            let timeLine = gsap.timeline();
+              timeLine
+              .to(".animation-box2",{
+                duration: 2,
+                x: 100,
+                startAt: {
+                  x: 0,
+                }
+              })
+              .to('.animation-box3',{
+                duration: 1,
+                y: 200,
+                startAt: {
+                  y: 0,
+                }
+              })
+              .to('.animation-box4',{
+                duration: 3,
+                rotation: 360,
+                startAt: {
+                  rotation: 0,
+                }
+              });
+          })
+        }
+      }
+    })();
+
+    animationModules.animation01();
+    animationModules.animation02();
+
+  </script>
+</body>
+</html>
