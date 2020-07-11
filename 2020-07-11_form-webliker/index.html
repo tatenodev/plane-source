@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>forms webliker</title>
+</head>
+<body>
+  <h1>forms webliker</h1>
+
+  <form action="confirm.php" method="POST">
+    <!-- name -->
+    <div>
+      <label for="forms-name">名前：</label>
+      <input id="forms-name" type="text" name="yourname" placeholder="山田太郎">
+    </div>
+    <!-- number -->
+    <div>
+      <label for="forms-number">予約番号：</label>
+      <input id="forms-number" type="number" name="yournumber">
+    </div>
+    <!-- email -->
+    <div>
+      <label for="forms-email">メール：</label>
+      <input id="forms-email" type="email" name="youremail">
+    </div>
+    <!-- textarea -->
+    <div>
+      <label for="forms-comment" style="vertical-align: top;">コメント：</label>
+      <textarea name="yourcomment" id="forms-comment" placeholder="自由にコメントを入力してください。"></textarea>
+    </div>
+    <!-- select -->
+    <div>
+      <select name="sushi" id="forms-select">
+        <option disabled selected>選択してください</option>
+        <option value="maguro">まぐろ</option>
+        <option value="ika">いか</option>
+        <option value="ebi">えび</option>
+      </select>
+    </div>
+    <!-- radio -->
+    <div>
+      <p>性別を選択</p>
+      <input type="radio" id="forms-male" name="yoursex" value="male"><label for="forms-male">男性</label>
+      <input type="radio" id="forms-female" name="yoursex" value="female"><label for="forms-female">女性</label>
+    </div>
+    <!-- checkbox -->
+    <div>
+      <p>好きなスポーツ</p>
+      <input type="checkbox" id="forms-fotball" name="sport" value="サッカー"><label for="forms-fotball">サッカー</label>
+      <input type="checkbox" id="forms-baseball" name="sport" value="野球"><label for="forms-baseball">野球</label>
+      <input type="checkbox" id="forms-basketball" name="sport" value="バスケ"><label for="forms-basketball">バスケ</label>
+    </div>
+    <input type="reset" value="リセット">
+    <input type="submit" value="送信">
+  </form>
+</body>
+</html>

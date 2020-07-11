@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>forms</title>
+</head>
+<body>
+  <h1>forms</h1>
+  <form action="/" method="POST" name="demoForm">
+    <div>
+      <label for="forms-name">名前:</label>
+      <input type="text" id="forms-name" name="yourname">
+    </div>
+    <div>
+      <label for="forms-number">予約番号:</label>
+      <input type="number" id="fomrs-number" name="yournumber">
+    </div>
+    <div>
+      <label for="forms-comment">コメント:</label>
+      <textarea name="yourcomment" id="fomrs-comment"></textarea>
+    </div>
+    <div>
+      <select name="yourselect" id="forms-select">
+        <option value="" disabled selected>選択してください</option>
+        <option value="maguro">まぐろ</option>
+        <option value="ika">いか</option>
+        <option value="ebi">えび</option>
+      </select>
+    </div>
+    <div>
+      <p>性別を選択してください。</p>
+      <input type="radio" id="forms-male" name="yoursex" value="男性"><label for="forms-male">男性</label>
+      <input type="radio" id="forms-female" name="yoursex" value="女性"><label for="forms-female">女性</label>
+    </div>
+    <div>
+      <p>好きなスポーツ</p>
+      <input type="checkbox" id="forms-fotball" name="sports" value="fotball"><label for="forms-fotball">サッカー</label>
+      <input type="checkbox" id="forms-baseball" name="sports" value="baseball"><label for="forms-baseball">野球</label>
+      <input type="checkbox" id="forms-basketball" name="sports" value="basketball"><label for="forms-basketball">バスケット</label>
+    </div>
+    <button id="consoleButton">コンソールに表示</button>
+  </form>
+
+  <script>
+    const pushButton = (()=> {
+      return {
+        submitForm: () => {
+          const consolebtn = document.getElementById('consoleButton');
+
+          consolebtn.addEventListener('click', e => {
+            const forms = document.forms.demoForm;
+            const name = forms.yourname.value;
+            const number = forms.yournumber.value;
+            const comment = forms.yourcomment.value;
+            const itemSelected = [];
+            const radio = forms.yoursex.value;
+            const checkboxitems = [];
+
+            for(item of forms.yourselect){
+              if(item.selected){
+                itemSelected.push(item.value)
+              }
+            };
+
+            for(item of forms.sports){
+              if(item.checked){
+                checkboxitems.push(item.value)
+              }
+            };
+            
+            e.preventDefault();
+
+            console.log(
+              'name:'+ name +'\n',
+              'number:'+ number +'\n',
+              'comment:'+ comment +'\n',
+              'selected:'+ itemSelected +'\n',
+              'sex:'+ radio +'\n',
+              'sports:'+ checkboxitems +'\n',
+            )
+          })
+        }
+      }
+    })();
+
+    pushButton.submitForm();
+  </script>
+</body>
+</html>
